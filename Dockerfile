@@ -1,6 +1,8 @@
 # basedon pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
 FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
 
+WORKDIR /src
+
 #copy src folder
 COPY src /src
 COPY requirements.txt /requirements.txt
