@@ -128,7 +128,7 @@ for epoch in range(epochs):
 
     print( f"Epoch : {epoch+1} - loss : {epoch_loss:.4f} - acc: {epoch_accuracy:.4f} - val_loss : {epoch_val_loss:.4f} - val_acc: {epoch_val_accuracy:.4f}\n")
 
-    save_model(model, image_size, num_classes, model_type, class_names, f"model.pth")
-    if trainId is not None:
-        save_path = os.path.join(model_savr_dir, f"model.pth")
-        save_model(model, image_size, num_classes, model_type, class_names, save_path)
+save_model(model, image_size, num_classes, model_type, class_names, f"model.pth")
+if trainId is not None:
+    save_path = os.path.join(model_savr_dir, f"model.pth")
+    save_model(model, image_size, num_classes, model_type, class_names, save_path)
