@@ -1,1 +1,1 @@
-docker run --rm -it --gpus --ipc=host -v /mnt/volume1/strap-classification:/dataset all efficient-net
+docker run --rm -it --gpus --ipc=host -v /mnt/volume1/strap-classification:/mnt/volume1/strap-classification all efficient-net
