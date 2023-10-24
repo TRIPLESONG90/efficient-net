@@ -124,7 +124,8 @@ for epoch in range(epochs):
 
     # save model by every 10
     if (epoch + 1) % 10 == 0:
-        save_model(model, image_size, num_classes, model_type, class_names, f"model_{epoch + 1}.pth")
+        save_path = os.path.join(model_savr_dir, f"model_{epoch + 1}.pth")
+        save_model(model, image_size, num_classes, model_type, class_names, save_path)
 
     print( f"Epoch : {epoch+1} - loss : {epoch_loss:.4f} - acc: {epoch_accuracy:.4f} - val_loss : {epoch_val_loss:.4f} - val_acc: {epoch_val_accuracy:.4f}\n")
 
