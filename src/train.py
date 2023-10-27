@@ -20,21 +20,21 @@ def save_model(model, image_size, num_classes, model_type, class_names, path):
 
 image_size = 512
 num_classes = 5
-batch_size = 20
-train_dir = '/mnt/volume1/strap-classification'
+batch_size = 12
+train_dir = '\\\\192.168.0.55\\volume\\strap-classification'
 lr = 0.001
 gamma = 0.9
 epochs = 300
 device = 'cuda'
-model_type = 'efficientnet-b0'
+model_type = 'efficientnet-b1'
 
 model = EfficientNet.from_pretrained(model_type, num_classes=num_classes)
 trainId = os.environ.get('TRAINID', None)
-model_savr_dir = os.path.join('/mnt/volume2', trainId)
 if trainId is not None:
-    os.makedirs(model_savr_dir)
-
-print(trainId, model_savr_dir,  f"{model_savr_dir}/model_val_best.pth")
+    model_savr_dir = os.path.join('/mnt/volume2', trainId)
+    if trainId is not None:
+        os.makedirs(model_savr_dir)
+    print(trainId, model_savr_dir,  f"{model_savr_dir}/model_val_best.pth")
 
 model.to(device)
 
@@ -65,6 +65,7 @@ for class_dir in glob.iglob(f'{train_dir}/*'):
     for j in range(len(files)):
         labels.append(i)
     i += 1
+
 
 total_cnt = sum(data_cnt_list)
 class_weights = [total_cnt / data_cnt_list[i] for i in range(len(data_cnt_list))] 
