@@ -19,7 +19,7 @@ def save_model(model, image_size, num_classes, model_type, class_names, path):
     }, path)
 
 image_size = 512
-num_classes = 5
+num_classes = 6
 batch_size = 12
 train_dir = '\\\\192.168.0.55\\volume\\strap-classification'
 lr = 0.001
@@ -36,6 +36,8 @@ if trainId is not None:
         os.makedirs(model_savr_dir)
     print(trainId, model_savr_dir,  f"{model_savr_dir}/model_val_best.pth")
 
+else:
+    model_savr_dir = "./"
 model.to(device)
 
 
@@ -125,8 +127,10 @@ for epoch in range(epochs):
 
     # save model by every 10
     if (epoch + 1) % 10 == 0:
-        save_path = os.path.join(model_savr_dir, f"model_{epoch + 1}.pth")
-        save_model(model, image_size, num_classes, model_type, class_names, save_path)
+        save_model(model, image_size, num_classes, model_type, class_names, f"model_{epoch + 1}.pth")
+        if trainId is not None:
+            save_path = os.path.join(model_savr_dir, f"model_{epoch + 1}.pth")
+            save_model(model, image_size, num_classes, model_type, class_names, save_path)
 
     print( f"Epoch : {epoch+1} - loss : {epoch_loss:.4f} - acc: {epoch_accuracy:.4f} - val_loss : {epoch_val_loss:.4f} - val_acc: {epoch_val_accuracy:.4f}\n")
 
