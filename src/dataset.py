@@ -11,7 +11,7 @@ class StrapDataset(Dataset):
     def __len__(self):
         self.filelength = len(self.file_list)
         return self.filelength
-
+        # df
     def __getitem__(self, idx):
         img_path = self.file_list[idx]
         img = Image.open(img_path).convert("RGB")
