@@ -23,6 +23,7 @@ class StrapDataset(Dataset):
         return img_transformed, label
     
 def get_dataloader(data_list, transform, batch_size=32, shuffle=True, sampler = None):
+    #asdf
     data = StrapDataset(data_list, transform=transform)
     loader = DataLoader(dataset = data, batch_size=batch_size, shuffle=shuffle, sampler=sampler)
     return loader
